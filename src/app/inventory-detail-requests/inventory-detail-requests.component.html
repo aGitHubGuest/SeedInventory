@@ -1,0 +1,9 @@
+<div *ngIf="sirs">
+  <ul class="sirs">
+    <li *ngFor="let sir of sirs">
+      <span class="badge"> Id:</span><span class="data">{{sir.Id}}</span>
+      <span class="badge">Requested:</span>
+      <input type="number" id="inventory-RequestedKernels" class="datamd" [(ngModel)]="sir.RequestedKernels" placeholder="RequestedKernels" (change)="requestChangeOn(sir.InventoryId)" />
+      <input type="checkbox" id="inventory-Selected" [(ngModel)]="sir.Selected" placeholder="Selected"  (change)="requestChangeOn(sir.InventoryId)"/>
+    </li>
+  </ul>

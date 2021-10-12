@@ -1,0 +1,17 @@
+<h2> {{pageTitle}}</h2>
+<ul class="sis">
+  <li *ngFor="let si of sis"
+      [class.selected]="si === selectedsi"
+      (click)="onSelect(si)">
+    <span class="badge"> Id:</span><span class="data">{{si.Id}}</span>
+    <span class="badge"> Name:</span> {{si.Name}}
+    <span class="badge"> Kernels:</span><span class="data">{{si.Kernels}}</span>
+    <span class="badge"> Used Kernels:</span><span class="data">{{si.KernelsUsed}}</span>
+    <span class="badge"> Available Kernels:</span><span class="data">{{si.Kernels - si.KernelsUsed}} <!--{{i.KernelsAvailable}}--></span>
+  </li>
+</ul>
+
+<div *ngIf="selectedsi">
+  <app-inventory-detail [si]="selectedsi" (changedSelection)='onChangedSelection($event)'></app-inventory-detail>
+  <app-inventory-detail-requests [sirs]="selectedsi.InventoryRequests" (changedSelection)='onChangedSelection($event)'></app-inventory-detail-requests>
+</div>

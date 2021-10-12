@@ -1,0 +1,16 @@
+<div *ngIf="si">
+  <h2>{{si.Name | uppercase}} Details</h2>
+  <div class="selected">
+    <span class="badge">Id: </span><span class="data">{{si.Id}}</span>
+    <span class="badge">Name: </span>
+    <input id="inventory-Name" class="datalg" [(ngModel)]="si.Name" placeholder="Name" />
+    <span class="badge"> Total Kernels:</span>
+    <input id="inventory-Kernels" class="datamd" [(ngModel)]="si.Kernels" placeholder="Kernels" (change)="requestChangeOn(si.Id)" />
+    <span class="badge">Used Kernels:</span><span class="data">{{si.KernelsUsed}}</span>
+    <span class="badge">Available Kernels: </span><span class="data">{{si.KernelsAvailable}}</span>
+    <button type="submit" class="datamd" style="margin-left: 2%;" [disabled]="saveDisabled()" (click)="ScheduleSelected('schedule')" title="Save">
+      <i class="fa fa-tasks"></i> Approve
+    </button>
+  </div>
+  <div id="errorMessage" class="alert">{{ errorMessage }}</div>
+</div>
